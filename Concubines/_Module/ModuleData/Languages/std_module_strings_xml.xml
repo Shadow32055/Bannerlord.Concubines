@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+	<tags>
+		<tag language="English" />
+	</tags>
+	<strings>
+		<string id="ConcubineAsk" text="I'm not a firm believer in marriage. Are you?" />
+		<string id="ConcubineAskConfirm" text="What..?" />
+		<string id="ConcubineAskConfirmYes" text="Would you like to be bound to me by something more than just marriage?" />
+		<string id="ConcubineAskConfirmYesExplanation" text="Taking a concubine will harm relations with their clan leader, if they have one, if you are not their friend!" />
+		<string id="ConcubineAskConfirmNo" text="Oh, it's nothing.." />
+		<string id="ConcubineAskAccepted" text="Yes, I think I would like that.[rf:positive, rb:unsure]" />
+		<string id="ConcubineAskDeclined" text="Absolutely not.[rf:very_negative_ag, rb:negative]" />
+		
+    <string id="ConcubineDispose" text="I think it's time for us to split apart." />
+		<string id="ConcubineDisposeConfirm" text="What? Why?[rf:very_negative_ag, rb:negative]" />
+		<string id="ConcubineDisposeConfirmYes" text="It's time to part ways." />
+		<string id="ConcubineDisposeConfirmYesExplanation" text="Disposing of a concubine will harm relations with the concubine!" />
+		<string id="ConcubineDisposeConfirmNo" text="I think maybe I should give it some more thought." />
+		<string id="ConcubineDisposeConfirmed" text="If you insist. Farewell.[rf:very_negative_ag, rb:negative]" />
+    
+    <string id="EncyclopediaConcubineTag" text="Concubine" />
+    <string id="EncyclopediaParamourTag" text="Paramour" />
+    
+    <string id="MessageConcubineTakenByParamour" text="{PARAMOUR} took {CONCUBINE} as a concubine." />
+  </strings>
+</base>

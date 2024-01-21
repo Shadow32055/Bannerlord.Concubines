@@ -43,15 +43,19 @@ namespace Concubines {
                         return;
                     }
 
-                    foreach (Hero concubine in data.Concubines.Keys.ToList())
+                    foreach (Hero concubine in data.Concubines.Keys.ToList()) {
                         if (concubine.Occupation != Occupation.Lord)
                             concubine.SetNewOccupation(Occupation.Lord);
+                    }
                 }
             }
         }
 
         private void DailyTickHero(Hero hero) {
-            if (!hero.IsLord || (hero.IsFemale && hero.IsPregnant))
+            if (!hero.IsLord)
+                return;
+
+            if (hero.IsFemale && hero.IsPregnant)
                 return;
 
             ParamourDailyTick(hero);

@@ -15,8 +15,7 @@ namespace Concubines.Models {
             ConcubineList data;
             try {
                 data = ConcubineCampaignBehavior.Instance.ConcubineData.First(c => c.Hero == hero);
-            }
-            catch (Exception) {
+            } catch (Exception) {
                 data = new ConcubineList(hero);
             }
             return data;

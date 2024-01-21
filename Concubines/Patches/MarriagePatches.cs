@@ -20,8 +20,9 @@ namespace Concubines.Patches {
 
     [HarmonyPatch(typeof(DefaultMarriageModel), nameof(DefaultMarriageModel.IsSuitableForMarriage))]
     internal class MarriageModelPatch {
-        [HarmonyPrefix]
-        private static bool Prefix(ref bool __result, Hero maidenOrSuitor) {
+        [HarmonyPostfix]
+        private static bool Postfix(ref bool __result, Hero maidenOrSuitor) {
+
             if (maidenOrSuitor.ConcubineOf() != null) {
                 __result = false;
                 return false;

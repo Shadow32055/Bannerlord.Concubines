@@ -28,7 +28,9 @@ namespace Concubines.Extensions {
             MobileParty? party = callingHero.PartyBelongedTo;
             if (otherHero == Hero.MainHero) {
                 if (party != null && party.LeaderHero == callingHero) {
-                    MergePartiesAction.Apply(MobileParty.MainParty.Party, party.Party);
+                    // Merge parties
+                    MobileParty.MainParty.Party.MemberRoster.Add(party.MemberRoster);
+                    //MergePartiesAction.Apply(MobileParty.MainParty.Party, party.Party);
                 } else {
                     AddHeroToPartyAction.Apply(callingHero, otherHero.PartyBelongedTo);
                 }

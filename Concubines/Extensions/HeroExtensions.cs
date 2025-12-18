@@ -1,4 +1,5 @@
-﻿using Concubines.Models;
+﻿using BetterCore.Utils;
+using Concubines.Models;
 using Concubines.Settings;
 using MCM.Abstractions.Base.Global;
 using System;
@@ -46,8 +47,7 @@ namespace Concubines.Extensions {
                 callingHero.CompanionOf = null;
             }
 
-            Utils.PrintToMessages("{=MessageConcubineTakenByParamour}{PARAMOUR} took {CONCUBINE} as a concubine.", 255, 229, 204,
-                ("PARAMOUR", otherHero.Name.ToString()), ("CONCUBINE", callingHero.Name.ToString()));
+			NotifyHelper.WriteMessage($"{otherHero.Name} took {callingHero.Name} as a concubine.",MsgType.Alert);
         }
 
         public static void ConcubineBecomeSpouse(this Hero callingHero) {

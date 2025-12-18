@@ -6,6 +6,7 @@ using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.Actions;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Library;
+using BetterCore.Utils;
 
 namespace Concubines {
     public class ConsoleCommands {
@@ -20,7 +21,7 @@ namespace Concubines {
                     concubine.DisposeAsConcubine();
 
                 if (!ConcubineCampaignBehavior.Instance.ConcubineData.Contains(data))
-                    Utils.PrintToMessages(heroFor.Name.ToString() + " CLEARED");
+                    NotifyHelper.WriteMessage(heroFor.Name.ToString() + " CLEARED", MsgType.Alert);
             }
 
             return "we good.";

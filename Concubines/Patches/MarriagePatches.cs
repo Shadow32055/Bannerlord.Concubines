@@ -9,7 +9,7 @@ namespace Concubines.Patches {
     [HarmonyPatch(typeof(MarriageOfferCampaignBehavior), "ConsiderMarriageForPlayerClanMember")]
     internal class MarriageOfferPatch {
         [HarmonyPrefix]
-        private static bool Prefix(ref bool __result, Hero playerClanHero) {
+        private static bool Prefix(ref bool __result, Hero playerClanHero, Clan consideringClan) {
             if (playerClanHero.ConcubineOf() != null) {
                 __result = false;
                 return false;
@@ -21,20 +21,18 @@ namespace Concubines.Patches {
     [HarmonyPatch(typeof(DefaultMarriageModel), nameof(DefaultMarriageModel.IsSuitableForMarriage))]
     internal class MarriageModelPatch {
         [HarmonyPostfix]
-        private static bool Postfix(ref bool __result, Hero maidenOrSuitor) {
+        private static void Postfix(ref bool __result, Hero maidenOrSuitor) {
 
             if (maidenOrSuitor.ConcubineOf() != null) {
                 __result = false;
-                return false;
             }
-            return true;
         }
     }
 
     [HarmonyPatch(typeof(MarriageAction), "ApplyInternal")]
     internal class MarriagePatch {
         [HarmonyPrefix]
-        private static bool Prefix(Hero firstHero, Hero secondHero) {
+        private static bool Prefix(Hero firstHero, Hero secondHero, bool showNotification) {
             if (firstHero.ConcubineOf() != null || secondHero.ConcubineOf() != null) {
                 return false;
             }

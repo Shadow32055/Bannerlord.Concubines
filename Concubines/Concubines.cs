@@ -14,6 +14,7 @@ namespace Concubines {
 
         private bool isInitialized = false;
         private bool isLoaded = false;
+        private bool isPatchedCampaign = false;
 
         //FIRST
         protected override void OnSubModuleLoad() {
@@ -59,6 +60,19 @@ namespace Concubines {
                 CampaignGameStarter campaignStarter = (CampaignGameStarter)gameStarter;
 
                 campaignStarter.AddBehavior(new ConcubineCampaignBehavior(campaignStarter));
+
+                // Patch Encyclopedia after campaign starts
+                if (!isPatchedCampaign) {
+                    Harmony h = new("Bannerlord.Windwhistle." + ModName);
+
+                    h.Patch(
+                        AccessTools.Method(typeof(TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia.Pages.EncyclopediaHeroPageVM), nameof(TaleWorlds.CampaignSystem.ViewModelCollection.Encyclopedia.Pages.EncyclopediaHeroPageVM.Refresh)),
+                        postfix: new HarmonyMethod(typeof(Patches.EncyclopediaPagePatch).GetMethod("Postfix", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static))
+                    );
+
+                    NotifyHelper.WriteMessage("EncyclopediaPagePatch patch applied", MsgType.Good);
+                    isPatchedCampaign = true;
+                }
             }
         }
     }
